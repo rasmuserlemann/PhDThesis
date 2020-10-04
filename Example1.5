@@ -1,0 +1,17 @@
+n=100
+d1 = rgeom(n, 0.5)
+d2 = rdweibull(n,0.7,0.8,zero=TRUE)
+
+#Histograms
+#hist(d1, xlab="", ylab = "", main = "")
+#hist(d2, xlab="", ylab = "", main = "")
+
+#sufficient statistic values
+t1 = sum(d1)
+t2 = sum(d2)
+
+#MLE estimates under the null hypothesis
+mle1 = n/(sum(d1)+n)
+mle2 = n/(sum(d2)+n)
+
+#Cramer-von Mises test distribution via parametric bootstrapping
