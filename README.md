@@ -1,5 +1,4 @@
 # Code that was used in the PhD thesis *Contributions to the Theory of Goodness-of-Fit Testing and Change Point Detection*
-The code for examples are written in R.
 
 ## Example 1.3
 The example is about comparing p-values calculated by parametric bootstrapping, conditional distributions with simulations and conditional distributions analytically.
