@@ -7,3 +7,6 @@ This Variables x1 and x2 define the given data. These should be changed to calcu
 ## Example 1.5
 Functions simcount, alg1, randombars and ct are part of the algorithm that draws simulations from the conditional geometric distribution. This is from the paper *Conditional Goodness-of-Fit Tests for Discrete Distributions*. The simulations are used in this example to plot the conditional test statistic's distribution. For comparison, we also plotted the distribution, calculated via parametric bootstrapping. Both of these distributions are plotted on the same graph to visualize their difference.
 Variables n, d1 and d2 fix the data which is used to calculate the distributions. Green lines are then added to the graphs to visualize the observed values (test statistic values of d1 and d2).
+
+## Trial Lecture Example
+First we generate two data sets x and y. The likelihood ratio test statistic value is calculated for both. Parametric bootstrapping is then used to construct the test statistic distribution under the null hypothesis for both data sets. In the end, function bootpvalue outputs the bootstrap p-value by comparing the data set test statistic value to the found test statistic distribution.
