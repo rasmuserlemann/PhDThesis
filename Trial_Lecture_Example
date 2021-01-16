@@ -1,0 +1,43 @@
+#Black data set
+x = c(rnorm(30,0,1), rnorm(70,0,1))
+#Blue data set
+y = c(rnorm(30,0,1), rnorm(70,1,1))
+
+#plot(x, xlab="Time index", ylab="Data")
+#plot(y, xlab="Time index", ylab="Data", col=4)
+
+#Likelihood ratio test
+Tk = function(x,k){
+  n = length(x)
+  return((k*(n-k)/n)*((1/k)*sum(x[1:k])-(1/(n-k))*sum(x[(k+1):n]))**2)
+}
+LR = function(x){
+  n = length(x)
+  S = sum((x-(1/n)*mean(x))**2)
+  vec = c()
+  for(k in 1:(n-1)){
+    vec = c(vec,abs(Tk(x,k))/S)
+  }
+  return(max(vec))
+}
+
+#Parametric bootstrapping
+bootpvalue = function(x,iter){
+  n = length(x)
+  mle1 = (1/n)*mean(x)
+  mle2 = sqrt(var(x))
+  testdistr = c()
+  obstest = LR(x)
+  for(k in 1:iter){
+    d = rnorm(n, mle1, mle2)
+    testdistr = c(testdistr, LR(d))
+  }
+  p = length(testdistr[testdistr >= obstest])/length(testdistr)
+  return(p)
+}
+
+#Black data set p-value
+bootpvalue(x,10**(6))
+
+#Blue data set p-value
+bootpvalue(y,10**(6))
